@@ -1,11 +1,52 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar >
     <ion-title>
-      About
+      Listado de Inventario
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+  <ion-card *ngFor="let articulo of articulos">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-8>
+          <ion-card-title>
+            {{ articulo.nombre }}
+          </ion-card-title>
+        </ion-col>
+        <ion-col col-2>
+          <button ion-button icon-start clear (click)="removeCant(articulo.codigo)">
+            <ion-icon name="remove"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col col-2>
+          <button ion-button icon-start clear (click)="addCant(articulo.codigo)">
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-item>
+      <p>Sku: {{ articulo.codigo }}</p>
+    </ion-item>
+    <ion-item>
+      <h2> {{ articulo.descripcion }}</h2>
+    </ion-item>
+
+
+    <ion-item>
+      <span item-start>
+        <ion-icon name="cube"></ion-icon> Cant: {{ articulo.cantidad_actual }}
+      </span>
+      <span item-start>
+        <ion-icon name="pricetag"></ion-icon> ${{ articulo.precio }}
+      </span>
+        <button ion-button icon-start clear item-end >
+          <ion-icon name="more"></ion-icon>
+        </button>
+    </ion-item>
+  </ion-card>
 
 </ion-content>

@@ -1,17 +1,71 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Agregar Articulo</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+
+  <ion-grid no-padding>
+    <ion-row justify-content-center>
+      <ion-col col-2>
+        <button ion-button icon-only round outline (click)="takePhoto()">
+          <ion-icon name="camera"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-end>
+      <ion-col col-8>
+        <ion-item>
+          <ion-label floating>Codigo Barras/QR</ion-label>
+          <ion-input [(ngModel)]="articulo.codigo" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-4 text-center>
+        <button ion-button icon-only round outline (click)="scanBarcode()">
+          <ion-icon name="qr-scanner"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item>
+    <ion-label floating>Nombre</ion-label>
+    <ion-input [(ngModel)]="articulo.nombre" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Descripcion</ion-label>
+    <ion-input [(ngModel)]="articulo.descripcion" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Precio Unitario</ion-label>
+    <ion-input [(ngModel)]="articulo.precio" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Cantidad Actual</ion-label>
+    <ion-input [(ngModel)]="articulo.cantidad_actual" type="number"></ion-input>
+  </ion-item>
+
+  <br/>
+  <button ion-button round full (click)="addArt(articulo)">Guardar</button>
+
+
+
+  <!-- <ion-card *ngIf="result">
+    <ion-card-content>
+      <p>Text: {{ result.text }}</p>
+      <p>Format: {{  result.format}}</p>
+      <p>Cancelled: {{ result.cancelled }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab right bottom>
+    <button ion-fab (click)="scanBarcode()">
+      <ion-icon name="barcode"></ion-icon>
+    </button>
+  </ion-fab> -->
+
 </ion-content>
